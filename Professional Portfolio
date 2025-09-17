@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abdearrahmane Hantat — Portfolio</title>
+  <meta name="description" content="Portfolio of Abdearrahmane Hantat — Biology student, developer, and creative technologist. Projects in web development, game design, and research." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Abdearrahmane Hantat — Portfolio" />
+  <meta property="og:description" content="Biology student & developer. Browse projects, skills, and contact information." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon (placeholder) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>AH</text></svg>">
+
+  <style>
+    /* -----------------------------
+       Root / Reset
+       ----------------------------- */
+    :root{
+      --bg-1: #0f1724;
+      --bg-2: #0b2545;
+      --card: rgba(255,255,255,0.04);
+      --muted: rgba(255,255,255,0.72);
+      --accent: #6c7cf2; /* soft indigo */
+      --glass: rgba(255,255,255,0.04);
+      --radius: 14px;
+      --gap: 1.25rem;
+      --max-width: 1100px;
+      --container-padding: 24px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      min-height:100vh;
+      background: linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 100%);
+      color: #eaf0ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding: var(--container-padding);
+      display:flex;justify-content:center;
+    }
+    .wrap{width:100%;max-width:var(--max-width)}
+
+    /* -----------------------------
+       Header / Nav
+       ----------------------------- */
+    header{
+      display:flex;align-items:center;justify-content:space-between;padding:12px 0;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,#3146ff,#6c7cf2);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:18px;box-shadow:0 6px 18px rgba(0,0,0,0.5)
+    }
+    .brand h1{font-size:1.05rem;letter-spacing:0.2px}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600;font-size:0.95rem}
+    nav a:hover, nav a:focus{background:var(--glass);color:white;outline:none}
+
+    /* hamburger for small screens */
+    .hamburger{display:none;background:transparent;border:0;color:var(--muted);font-size:20px}
+
+    /* -----------------------------
+       Hero
+       ----------------------------- */
+    .hero{
+      display:grid;grid-template-columns:1fr 360px;gap:clamp(16px,3vw,48px);align-items:center;padding:28px 0 20px;
+    }
+    .intro h2{font-size:2rem;margin-bottom:8px;color:white}
+    .intro p{color:var(--muted);margin-bottom:16px}
+    .cta{display:flex;gap:10px}
+    .btn{background:linear-gradient(90deg,var(--accent),#3fb2ff);border:none;padding:10px 16px;border-radius:10px;color:white;font-weight:600;cursor:pointer}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+
+    .card-profile{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      padding:20px;border-radius:var(--radius);backdrop-filter: blur(6px);box-shadow: 0 6px 18px rgba(7,9,22,0.6);
+    }
+    .avatar{
+      width:100%;height:260px;border-radius:10px;background:linear-gradient(135deg,#0b2545,#162b4a);display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700;color:rgba(255,255,255,0.85)
+    }
+    .profile-meta{margin-top:12px}
+    .profile-meta p{color:var(--muted);font-size:0.95rem}
+
+    /* -----------------------------
+       Sections common styles
+       ----------------------------- */
+    section.block{margin-top:18px;padding:18px;background:transparent}
+    .block .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .section-header h3{font-size:1.05rem}
+
+    /* -----------------------------
+       Skills / Projects grid
+       ----------------------------- */
+    .grid{display:grid;gap:14px}
+    .skills-grid{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
+    .skill{
+      background:var(--card);padding:14px;border-radius:12px;display:flex;flex-direction:column;gap:8px;align-items:flex-start
+    }
+    .skill strong{color:white}
+    .skill small{color:var(--muted)}
+
+    .projects-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .project{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;display:flex;flex-direction:column;gap:10px;min-height:140px
+    }
+    .project .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{background:rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;font-size:12px}
+
+    /* -----------------------------
+       Contact
+       ----------------------------- */
+    .contact-form{display:grid;gap:10px}
+    .form-row{display:flex;gap:10px}
+    .form-row .field{flex:1}
+    input[type=text], input[type=email], textarea{
+      width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:white;resize:vertical
+    }
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    textarea{min-height:120px}
+
+    /* -----------------------------
+       Footer
+       ----------------------------- */
+    footer{margin-top:28px;padding:18px;border-top:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between;align-items:center}
+    footer small{color:var(--muted)}
+
+    /* -----------------------------
+       Utilities
+       ----------------------------- */
+    .muted{color:var(--muted)}
+
+    /* -----------------------------
+       Responsive
+       ----------------------------- */
+    @media (max-width: 880px){
+      .hero{grid-template-columns:1fr}
+      .hamburger{display:block}
+      nav{display:none}
+      .logo{width:48px;height:48px}
+    }
+
+    @media (max-width:480px){
+      :root{--container-padding:12px}
+      .avatar{height:200px}
+      .intro h2{font-size:1.4rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="top">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">AH</div>
+        <div>
+          <h1 class="sr-only">Abdearrahmane Hantat</h1>
+          <div style="font-weight:600">Abdearrahmane Hantat</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.7)">Biology • Web & Game dev • Research</div>
+        </div>
+      </div>
+
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="hamburger" aria-expanded="false" aria-controls="mobile-menu" id="hamb">☰</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="intro">
+          <h2>Hello — I’m Abdearrahmane</h2>
+          <p class="muted">Biology student at the University of Jijel with a passion for web development, game design, and creating tools that merge science with technology.</p>
+          <p class="muted">I build: educational tools, experimental web apps, and game prototypes. I’m looking for collaboration and internships where I can combine research with software.</p>
+
+          <div class="cta" style="margin-top:18px">
+            <a class="btn" href="#projects">See Projects</a>
+            <a class="btn secondary" href="#contact">Contact Me</a>
+          </div>
+
+          <ul style="margin-top:14px;display:flex;gap:10px;list-style:none;padding-left:0">
+            <li class="muted">📍 Jijel, Algeria</li>
+            <li class="muted">⚽ Basketball player</li>
+            <li class="muted">🚗 Car enthusiast</li>
+          </ul>
+        </div>
+
+        <aside class="card-profile" aria-label="Profile card">
+          <div class="avatar" role="img" aria-label="Profile initials">AH</div>
+          <div class="profile-meta">
+            <p style="font-weight:600">Abdearrahmane Hantat</p>
+            <p class="muted">Biology student • Developer</p>
+            <p class="muted" style="margin-top:8px">Email: <a href="mailto:shight@gmail.com" style="color:inherit;text-decoration:underline">shight@gmail.com</a></p>
+            <p class="muted">Discord: <a href="#" style="color:inherit;text-decoration:underline">@oriokay</a></p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="block" aria-labelledby="about-heading">
+        <div class="section-header">
+          <h3 id="about-heading">About</h3>
+          <div class="muted">Short introduction</div>
+        </div>
+        <p class="muted">I’m a biology student at the University of Jijel focused on microbiology and biochemistry, and an enthusiastic developer. I combine scientific curiosity with programming to create educational and experimental projects, from web apps to game prototypes and research tools. I enjoy learning new technologies and working in cross-disciplinary teams.</p>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="block" aria-labelledby="skills-heading">
+        <div class="section-header">
+          <h3 id="skills-heading">Skills</h3>
+          <div class="muted">Technical & academic</div>
+        </div>
+        <div class="grid skills-grid">
+          <div class="skill"><strong>HTML & CSS</strong><small class="muted">Responsive layouts, semantic markup</small></div>
+          <div class="skill"><strong>JavaScript</strong><small class="muted">DOM, ES6+, small apps</small></div>
+          <div class="skill"><strong>Flutter / Mobile</strong><small class="muted">Building Android apps</small></div>
+          <div class="skill"><strong>Godot</strong><small class="muted">2D/3D game prototypes</small></div>
+          <div class="skill"><strong>Biology & Lab</strong><small class="muted">Microbiology, biochemistry, hydroponics</small></div>
+          <div class="skill"><strong>Research</strong><small class="muted">Data analysis & experimental design</small></div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="block" aria-labelledby="projects-heading">
+        <div class="section-header">
+          <h3 id="projects-heading">Selected Projects</h3>
+          <div class="muted">A few highlights</div>
+        </div>
+
+        <div class="grid projects-grid">
+          <article class="project" aria-labelledby="p1">
+            <h4 id="p1">BioScan — Text Recognition</h4>
+            <p class="muted">A Flutter app that extracts text from images and converts them into editable content with PDF export and history saving.</p>
+            <div class="tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">ML</span>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <a class="btn" href="https://oriokay.github.io/" target="_blank" rel="noopener">Live</a>
+              <a class="btn secondary" href="#" aria-label="View source">Source</a>
+            </div>
+          </article>
+
+          <article class="project" aria-labelledby="p2">
+            <h4 id="p2">Dream Loop — 2D Puzzle Game</h4>
+            <p class="muted">A daily-playable 2D puzzle/adventure game built in Godot with environmental puzzles and narrative elements.</p>
+            <div class="tags">
+              <span class="tag">Godot</span>
+              <span class="tag">Design</span>
+            </div>
+          </article>
+
+          <article class="project" aria-labelledby="p3">
+            <h4 id="p3">Hydroponics Planner</h4>
+            <p class="muted">A concept & prototype for planning small-scale hydroponic systems — includes nutrient schedule and budget estimator.</p>
+            <div class="tags">
+              <span class="tag">AgTech</span>
+              <span class="tag">Prototype</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="block" aria-labelledby="contact-heading">
+        <div class="section-header">
+          <h3 id="contact-heading">Contact</h3>
+          <div class="muted">Get in touch</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 340px;gap:18px">
+          <div>
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="form-row">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" placeholder="Your full name" required>
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                </div>
+              </div>
+              <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell me about your project or opportunity" required></textarea>
+              </div>
+              <div style="display:flex;gap:10px;align-items:center;margin-top:6px">
+                <button class="btn" type="submit">Send message</button>
+                <div id="formStatus" class="muted" aria-live="polite" style="font-size:14px"></div>
+              </div>
+            </form>
+          </div>
+
+          <aside class="card-profile">
+            <h4 style="margin-bottom:10px">Contact</h4>
+            <p class="muted">Email: <a href="mailto:shight@gmail.com" style="color:inherit;text-decoration:underline">shight@gmail.com</a></p>
+            <p class="muted">Discord: <a href="#" style="color:inherit;text-decoration:underline">@oriokay</a></p>
+            <p class="muted">Location: Jijel, Algeria</p>
+            <div style="margin-top:12px">
+              <a class="btn" href="#top">Back to top</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <small>© 2025 Abdearrahmane Hantat — Built with ❤️ • <a href="https://oriokay.github.io/" target="_blank" rel="noopener" style="color:inherit">Portfolio</a></small>
+      <small class="muted">Designed for clarity, accessibility and fast load.</small>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const hamb = document.getElementById('hamb');
+    hamb.addEventListener('click', () => {
+      const nav = document.querySelector('nav');
+      const expanded = hamb.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        nav.style.display = '';
+        hamb.setAttribute('aria-expanded','false');
+      } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.position = 'absolute';
+        nav.style.right = '24px';
+        nav.style.top = '68px';
+        nav.style.background = 'linear-gradient(180deg, rgba(12,17,30,0.9), rgba(8,13,26,0.95))';
+        nav.style.padding = '12px';
+        nav.style.borderRadius = '10px';
+        hamb.setAttribute('aria-expanded','true');
+      }
+    });
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const target = this.getAttribute('href');
+        if(target.startsWith('#')){
+          e.preventDefault();
+          const el = document.querySelector(target);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      })
+    });
+
+    // Basic form handling (no backend) — shows a friendly message
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      if(!name || !email || !message){
+        status.textContent = 'Please complete all fields.';
+        return;
+      }
+      status.textContent = 'Thanks — your message looks good (this demo does not send email).';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
